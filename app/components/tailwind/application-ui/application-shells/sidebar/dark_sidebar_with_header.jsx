@@ -54,7 +54,7 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-export default function Example() {
+export default function Dark_sidebar_with_header() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
