@@ -1,7 +1,12 @@
 import { NextResponse } from "next/server";
-export function GET(request, { params }) {
-  if (params.id > 10) {
+import prisma from "../../../../prisma/client";
+
+export async function GET(request, { params }) {
+  const user = await prisma.user.findUnique({
+    where: { id: parseInt(params.id ) },
+  });
+  if (!user) {
     return NextResponse.json({ error: "not Vojod" }, { status: 404 });
   }
-  return NextResponse.json({ id: params.id, name: "milad" });
+  return NextResponse.json(user);
 }
